@@ -42,7 +42,7 @@ namespace Solitare.Core.Model
 					Constants.JokerSecondaryValue => isDifferentJokers
 						? Constants.JokerSecondaryCode
 						: Constants.JokerInvariantCode,
-					Constants.JokerPrimaryValue => Constants.JokerPrimaryCode,
+					//Constants.JokerPrimaryValue => Constants.JokerPrimaryCode,
 					_ => throw new InvalidOperationException($"Card value {cardValue} is too large to be a joker.")
 				};
 
@@ -128,7 +128,7 @@ namespace Solitare.Core.Model
 				return true;
 			}
 
-			return Value == other.Value && Suite == other.Suite;
+			return Value == other.Value && Suite == other.Suite && Code == other.Code;
 		}
 
 		public override bool Equals(object obj)
@@ -153,7 +153,7 @@ namespace Solitare.Core.Model
 
 		public override int GetHashCode()
 		{
-			return HashCode.Combine(Value, (int)Suite);
+			return HashCode.Combine(Value, (int)Suite, Code);
 		} 
 
 		#endregion

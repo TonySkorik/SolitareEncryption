@@ -67,15 +67,20 @@ namespace Solitare.Core.Helpers
 
 			Array.Copy(sliceBeforeInsert, 0, tempArray, 0, sliceBeforeInsert.Length);
 
-			tempArray[sliceBeforeInsert.Length] = elementToMove; // or tempArray[toIndex]
+			tempArray[sliceBeforeInsert.Length] = elementToMove;
 
-			Array.Copy(sliceAfterInsert, 0, tempArray, sliceBeforeInsert.Length + 1, sliceAfterInsert.Length);
+			Array.Copy(
+				sliceAfterInsert,
+				0,
+				tempArray,
+				sliceBeforeInsert.Length + 1 /*for inserted element*/,
+				sliceAfterInsert.Length);
 
 			Array.Copy(
 				sliceAfterElement,
 				0,
 				tempArray,
-				sliceBeforeInsert.Length + 1 + sliceBeforeInsert.Length + 1,
+				sliceBeforeInsert.Length + 1 /*for inserted element*/ + sliceAfterInsert.Length,
 				sliceAfterElement.Length);
 
 			Array.Copy(tempArray, sourceArray, sourceArray.Length);

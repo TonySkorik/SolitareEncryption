@@ -46,9 +46,9 @@ namespace Solitare.Core.Algorithm
 			// calculate new JA position
 			var jaStartIndex = Array.IndexOf(_cards, Constants.JokerSecondaryCard);
 			var jaNewIndex = jaStartIndex + 1;
-			if (jaStartIndex == _cards.Length - 1)
+			if (jaStartIndex == _cards.Length - 1) // if joker is last
 			{
-				jaNewIndex = 1; // after the first card
+				jaNewIndex = 1; // place after the first card
 			}
 
 			_cards.Move(jaStartIndex, jaNewIndex);
@@ -63,20 +63,21 @@ namespace Solitare.Core.Algorithm
 			 */
 
 			// calculate new JB position
-			var jaStartIndex = Array.IndexOf(_cards, Constants.JokerPrimaryCard);
-			var jaNewIndex = jaStartIndex + 2;
+			var jbStartIndex = Array.IndexOf(_cards, Constants.JokerPrimaryCard);
+			var jbNewIndex = jbStartIndex + 2;
 
-			if (jaStartIndex == _cards.Length - 1) // if joker is last
+			if (jbStartIndex == _cards.Length - 1) // if joker is last
 			{
-				jaNewIndex = 2; // after the second card
+				jbNewIndex = 2; // place after the second card
 			}
 
-			if (jaStartIndex == _cards.Length - 2) // if joker is second before last
+			if (jbStartIndex == _cards.Length - 2) // if joker is second before last
 			{
-				jaNewIndex = 2; // after the first card
+				//jbNewIndex = 1; // place after the first card
+				jbNewIndex = 2; // place after the first card
 			}
 			
-			_cards.Move(jaStartIndex, jaNewIndex);
+			_cards.Move(jbStartIndex, jbNewIndex);
 
 			DebugWriteDeck(iteration, 2);
 		}
