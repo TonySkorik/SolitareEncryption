@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -105,6 +106,19 @@ namespace Solitare.Core.Tests
 			AssertCard(jokerA, Suite.Joker, 54);
 			AssertCard(jokerB, Suite.Joker, 53);
 			AssertCard(jokerInvariant, Suite.Joker, 53);
+		}
+
+		[TestMethod]
+		public void TestDeckParsing1()
+		{
+			List<string> cardCodes = new List<string>()
+			{
+				"Ac", "Kc", "ah", "kh"
+			};
+
+			Deck d = Deck.Parse(cardCodes);
+
+			d.Select(c => c.Value).Should().Equal(1, 13, 27, 39);
 		}
 
 		public void AssertCard(Card card, Suite suite, int value)

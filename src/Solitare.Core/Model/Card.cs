@@ -8,6 +8,7 @@ namespace Solitare.Core.Model
 		
 		public int Value { get; private set; }
 		public Suite Suite { get; private set; }
+		public string Code => _code;
 
 		private Card(string code)
 		{
@@ -20,9 +21,9 @@ namespace Solitare.Core.Model
 			var fixedCode = cardCode.Trim().ToUpperInvariant();
 			
 			//joker case
-			if (fixedCode == "JA"
-				|| fixedCode == "JB"
-				|| fixedCode == "JJ")
+			if (fixedCode == Constants.JokerSecondary
+				|| fixedCode == Constants.JokerPrimary
+				|| fixedCode == Constants.JokerInvariant)
 			{
 				return new Card(fixedCode)
 				{
@@ -56,5 +57,9 @@ namespace Solitare.Core.Model
 			return ret;
 		}
 
+		public override string ToString()
+		{
+			return $"{_code}: Suite = {Suite}, Value = {Value}";
+		}
 	}
 }

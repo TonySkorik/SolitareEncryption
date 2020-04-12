@@ -19,11 +19,15 @@ namespace Solitare.Core.Model
 			{ "J", 11 },
 			{ "Q", 12 },
 			{ "K", 13 },
-			{ "JJ", 53}, // Joker invariant - not primary, nor secondary - for alternative algorithm
-			{ "JA", 54 }, // Joker Primary
-			{ "JB", 53 } // Joker Secondary
+			{ JokerPrimary, 54 }, // Joker Primary
+			{ JokerSecondary, 53}, // Joker Secondary
+			{ JokerInvariant, 53 } // Joker invariant - not primary, nor secondary - for alternative algorithm
 		};
 
 		public const string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+		public const string JokerSecondary = "JA";
+		public const string JokerPrimary = "JB";
+		public const string JokerInvariant = "JJ";
 	}
 }
