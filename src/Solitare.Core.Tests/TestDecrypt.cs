@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Solitare.Core.Algorithm;
+using Solitare.Core.Model;
 
 namespace Solitare.Core.Tests
 {
@@ -65,8 +67,12 @@ namespace Solitare.Core.Tests
 			"4d"
 		};
 		
-		public TestDecrypt()
+		[TestMethod]
+		public void TestDecrypt1()
 		{
+			var deck = Deck.Parse(_deck);
+			var csp = new SolitareCryptoProvider(new ShuffleWithDifferentJokers());
+			var message = csp.Decrypt(_cypherText, deck);
 
 		}
 

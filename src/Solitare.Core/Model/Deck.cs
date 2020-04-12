@@ -7,12 +7,15 @@ namespace Solitare.Core.Model
 {
 	public class Deck : List<Card>
 	{
+		//private Card[] _cards;
+		//public Card[] Cards => _cards;
+
 		#region Ctor
 		
-		private Deck()
+		public Deck()
 		{ }
 
-		public Deck(List<Card> cards)
+		public Deck(IEnumerable<Card> cards)
 		{
 			AddRange(cards);
 		}
@@ -33,21 +36,25 @@ namespace Solitare.Core.Model
 			return ret;
 		}
 
+		public static Deck Create(IEnumerable<int> cardValues, bool isDifferentJokers = true)
+		{
+			var ret = new Deck(cardValues.Select(v=>Card.Create(v, isDifferentJokers)));
+			return ret;
+		}
+
 		#endregion
 
-		#region Overrides
+		#region ToString
 
 		public override string ToString()
 		{
-			StringBuilder sb = new StringBuilder(Count);
+			return string.Join("; ", this.Select(c => c.ToString()));
+		}
 
-			foreach (var card in this)
-			{
-				sb.AppendLine(card.ToString());
-			}
-
-			return sb.ToString();
-		} 
+		public string ToShortString()
+		{
+			return string.Join("; ", this.Select(c => c.Code));
+		}
 
 		#endregion
 	}
