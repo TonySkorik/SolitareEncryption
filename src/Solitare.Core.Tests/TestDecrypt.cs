@@ -75,7 +75,6 @@ namespace Solitare.Core.Tests
 			var csp = new SolitareCryptoProvider(new ShuffleWithDifferentJokers());
 			var message = csp.Decrypt(_cypherText, deck);
 			Debug.WriteLine(message);
-
 		}
 
 		[TestMethod]

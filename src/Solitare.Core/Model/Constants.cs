@@ -19,9 +19,8 @@ namespace Solitare.Core.Model
 			{ "J", 11 },
 			{ "Q", 12 },
 			{ "K", 13 },
-			{ JokerPrimaryCode, JokerPrimaryValue }, // Joker Primary
-			{ JokerSecondaryCode, JokerSecondaryValue}, // Joker Secondary
-			{ JokerInvariantCode, JokerInvariantValue } // Joker invariant - not primary, nor secondary - for alternative algorithm
+			{ JokerBCode, 53 }, // Joker A
+			{ JokerACode, 53 }, // Joker B
 		};
 
 		public static readonly Dictionary<int, string> CardCodes = new Dictionary<int, string>()
@@ -39,21 +38,16 @@ namespace Solitare.Core.Model
 			{ 11, "J" },
 			{ 12, "Q" },
 			{ 13, "K" },
-			{ JokerPrimaryValue, JokerPrimaryCode }, // Joker Primary
-			{ JokerSecondaryValue, JokerSecondaryCode } // Joker Secondary
+			{ JokerValue, JokerBCode }, // Joker B ???
 		};
 
 		public const string Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-		public const string JokerSecondaryCode = "JA";
-		public const int JokerSecondaryValue = 53;
-		public const string JokerPrimaryCode = "JB";
-		public const int JokerPrimaryValue = 54;
-		public const string JokerInvariantCode = "JJ";
-		public const int JokerInvariantValue = 53;
+		public const string JokerACode = "JA";
+		public const string JokerBCode = "JB";
+		public const int JokerValue = 54;
 
-		public static Card JokerSecondaryCard = Card.Parse(JokerSecondaryCode);
-		public static Card JokerPrimaryCard = Card.Parse(JokerPrimaryCode);
-		public static Card JokerInvariantCard = Card.Parse(JokerInvariantCode);
+		public static Card JokerACard = Card.Parse(JokerACode);
+		public static Card JokerBCard = Card.Parse(JokerBCode);
 	}
 }

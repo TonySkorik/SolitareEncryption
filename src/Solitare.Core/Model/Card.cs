@@ -31,23 +31,11 @@ namespace Solitare.Core.Model
 
 		#region Factory methods
 
-		public static Card Create(int cardValue, bool isDifferentJokers = true)
+		public static Card Create(int cardValue)
 		{
-			if (cardValue == Constants.JokerSecondaryValue
-				|| cardValue == Constants.JokerPrimaryValue
-				|| cardValue == Constants.JokerInvariantValue)
+			if (cardValue == Constants.JokerValue)
 			{
-				var cardCode = cardValue switch
-				{
-					Constants.JokerSecondaryValue => isDifferentJokers
-						? Constants.JokerSecondaryCode
-						: Constants.JokerInvariantCode,
-					//Constants.JokerPrimaryValue => Constants.JokerPrimaryCode,
-					_ => throw new InvalidOperationException($"Card value {cardValue} is too large to be a joker.")
-				};
-
-				var joker = new Card(cardCode, cardValue, Suite.Joker);
-
+				var joker = new Card(Constants.JokerACode, cardValue, Suite.Joker);
 				return joker;
 			}
 
@@ -75,9 +63,8 @@ namespace Solitare.Core.Model
 			var fixedCode = cardCode.Trim().ToUpperInvariant();
 
 			//joker case
-			if (fixedCode == Constants.JokerSecondaryCode
-				|| fixedCode == Constants.JokerPrimaryCode
-				|| fixedCode == Constants.JokerInvariantCode)
+			if (fixedCode == Constants.JokerACode
+				|| fixedCode == Constants.JokerBCode)
 			{
 				return new Card(fixedCode, Constants.CardValues[fixedCode], Suite.Joker);
 			}
@@ -153,7 +140,7 @@ namespace Solitare.Core.Model
 
 		public override int GetHashCode()
 		{
-			return HashCode.Combine(Value, (int)Suite, Code);
+			return HashCode.Combine(Value, (int)Suite);
 		} 
 
 		#endregion

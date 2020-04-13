@@ -36,9 +36,10 @@ namespace Solitare.Core.Model
 			return ret;
 		}
 
-		public static Deck Create(IEnumerable<int> cardValues, bool isDifferentJokers = true)
+		public static Deck Create(IEnumerable<int> cardValues)
 		{
-			var ret = new Deck(cardValues.Select(v=>Card.Create(v, isDifferentJokers)));
+			// TODO: reassign Joker if previously assigned!
+			var ret = new Deck(cardValues.Select(Card.Create));
 			return ret;
 		}
 
