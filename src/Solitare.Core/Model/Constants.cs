@@ -45,7 +45,7 @@ namespace Solitare.Core.Model
 
 		public const string JokerACode = "JA";
 		public const string JokerBCode = "JB";
-		public const int JokerValue = 54;
+		public const int JokerValue = 53;
 
 		public static Card JokerACard = Card.Parse(JokerACode);
 		public static Card JokerBCard = Card.Parse(JokerBCode);

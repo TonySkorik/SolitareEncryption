@@ -29,8 +29,9 @@ namespace Solitare.Core.Algorithm
 				Step4(i);
 				var keyElementValue = Step5();
 
-				if (keyElementValue == null)
+				while (keyElementValue == null)
 				{
+					// means we hit a joker - calculate output key again
 					Step1(i);
 					Step2(i);
 					Step3(i);
@@ -98,8 +99,6 @@ namespace Solitare.Core.Algorithm
 
 			var jokerAIndex = Array.IndexOf(_cards, Constants.JokerACard);
 			var jokerBIndex = Array.IndexOf(_cards, Constants.JokerBCard);
-
-			// TODO: corner case whn two jokers are adjacent!
 
 			_cards.SwapParts(
 				0,
